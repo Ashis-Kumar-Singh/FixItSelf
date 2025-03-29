@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fix It Self</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .banner {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .banner img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .banner-text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        nav {
+            position: relative;
+            z-index: 3;
+        }
+        .dropdown-content {
+            position: absolute;
+            background: white;
+            display: none;
+            z-index: 4;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            display: block;
+            padding: 10px;
+            color: black;
+            text-decoration: none;
+        }
+        .dropdown-content a:hover {
+            background: #f0f0f0;
+        }
+        .category a {
+            display: block;
+            text-align: center;
+            text-decoration: none;
+            color: black;
+        }
+        .category a img {
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            border-radius: 10px;
+        }
+        .category a:hover img {
+            transform: scale(1.5);
+            background-color: rgba(173, 216, 230, 0.5);
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-img {
+            width: 50px;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="images/symbol final.png" alt="Fix It Self Logo" class="logo-img">
+            <div class="logo">Fix It Self</div>
+        </div>
+        
+    </header>
+    
+    <section class="banner">
+        <img src="images/banner.jpg" alt="Repair Banner">
+        <div class="banner-text">
+            <h2>First time repairing?</h2>
+            <p>Learn to fix just about anything. <strong>You got this.</strong></p>
+        </div>
+    </section>
+
+    <section class="repair-section">
+        <h1>A Project intended to help troubleshooting.</h1>
+        <p>We would help people repair their things every day. Every time you fix something, you help the planet.</p>
+        <div class="categories">
+            <div class="category">
+                <a href="pc-laptop.html">
+                    <img src="images/pc-laptop.png" alt="PC Laptop">
+                    <p>PC Laptop</p>
+                </a>
+            </div>
+            <div class="category">
+                <a href="#">
+                    <img src="images/phone.png" alt="Phone">
+                    <p>Phone</p>
+                </a>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

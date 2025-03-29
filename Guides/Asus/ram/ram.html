@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asus RAM Replacement Guide</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; background-color: #eeeeee; padding: 20px; }
+        .step { border-bottom: 1px solid #ddd; padding: auto; background-color: #fff; margin-bottom: 8px; font-size: 18px; }
+        .step h2 { font-size: 22px; }
+        .content { padding: 15px; background-color: #fff; font-size: 25px; }
+        .thumbnail { width: 100px; height: 100px; margin-right: 5px; border: 1px solid #ddd; }
+        .main-image { width: 770px; height: auto; margin-bottom: 10px; border: 1px solid #ddd; }
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 8px 15px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="goBack()" class="back-button">&#8592; Back</button>
+    <h1 style="font-size: 28px; text-align: center;">Asus RAM Replacement Guide</h1>
+    <div id="steps">
+        <div class="step">
+            <h2>Step 1 RAM</h2>
+            <div class="content">
+                <img src="image/1.jpg" alt="Step 1" class="main-image">
+                <ul>
+                    <li>Before removing the RAM, shut down your laptop and unplug the power adapter.</li>
+                    <li>Turn the laptop over onto a flat surface.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <h2>Step 2</h2>
+            <div class="content">
+                <img src="image/2.jpg" alt="Step 2" class="main-image">
+                <ul>
+                    <li>At the top center on the back of the device, you will see a small square panel.</li>
+                    <li>Use a Phillips screwdriver to remove two screws located on the panel.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <h2>Step 3</h2>
+            <div class="content">
+                <img src="image/3.jpg" alt="Step 3" class="main-image">
+                <div>
+                    <img src="image/3a.jpg" class="thumbnail" alt="Thumbnail">
+                    <img src="image/3b.jpg" class="thumbnail" alt="Thumbnail">
+                </div>
+                <ul>
+                    <li>Ground yourself from electrostatic discharge by touching any metal objects or use your anti-static gloves.</li>
+                    <li>System memories are very sensitive to static electricity.</li>
+                    <li>Push apart the latches on either side of the slot that hold the RAM in place, but gently.</li>
+                    <li>Use firm pressure as needed. You will hear the RAM pop out of the slot.</li>
+                    <li>Take the RAM stick out carefully, and set it aside on an anti-static surface.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <h2>Step 4</h2>
+            <div class="content">
+                <img src="image/4.jpg" alt="Step 4" class="main-image">
+                <ul>
+                    <li>To replace the RAM, take and hold the new RAM by the sides, with the gold edge facing down towards the device.</li>
+                    <li>Make sure your hands are clean and do not let your fingerprints get on the memory.</li>
+                    <li>Line up the top corners of the new RAM with the top edges of the now empty panel.</li>
+                    <li>Slide the RAM into the slot until it's firmly in place.</li>
+                    <li>Once you hear the RAM stick click into place, you'll know you did it correctly.</li>
+                    <li>Now just screw the panel door back on and you're finished!</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script>
+        function goBack() {
+            window.location.href = '../../../Laptops/asus.html';
+        }
+    </script>
+    <script src="../../../script.js"></script>
+</body>
+</html>
