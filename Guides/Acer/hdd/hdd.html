@@ -1,42 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acer HDD Repair Guide</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; background-color: #eeeeee; padding: 20px; }
-        .step { border-bottom: 1px solid #ddd; padding: auto; background-color: #fff; margin-bottom: 8px; font-size: 50px; }
-        .step h2 { font-size: 50px; }
-        .content { padding: 15px; background-color: #fff; font-size: 25px; }
-        .thumbnail { width: 100px; height: 100px; margin-right: 5px; border: 1px solid #ddd; }
-        .main-image { width: 770px; height: auto; margin-bottom: 10px; border: 1px solid #ddd; }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9fafc;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .step h2 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .main-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            margin: 0 auto 10px auto;
+            display: block;
+            border: 2px solid #ddd;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .thumbnail {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 6px 0;
+            font-size: 18px;
+            color: #444;
+        }
+
         .back-button {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            padding: 8px 15px;
+            top: 15px;
+            left: 15px;
+            padding: 10px 15px;
             background-color: #007bff;
-            color: white;
+            color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 14px;
             cursor: pointer;
-            font-size: 16px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out;
         }
+
         .back-button:hover {
             background-color: #0056b3;
         }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .step h2 {
+                font-size: 20px;
+            }
+
+            ul li {
+                font-size: 16px;
+            }
+
+            .main-image {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .thumbnail {
+                width: 60px;
+                height: 60px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <button onclick="goBack()" class="back-button">&#8592; Back</button>
-    <h1 style="font-size: 28px; text-align: center;">Acer HDD Repair Guide</h1>
+    <h1>Acer HDD Repair Guide</h1>
+
     <div id="steps">
         <div class="step">
-            <h2>Step 1</h2>
+            <h2>Step 1: Preparation</h2>
             <div class="content">
                 <img src="image/1.jpg" alt="Step 1" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/1a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/1b.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/1c.jpg" class="thumbnail" alt="Thumbnail">
@@ -44,30 +153,32 @@
                 <ul>
                     <li>Turn off the laptop and unplug it.</li>
                     <li>Flip the laptop over.</li>
-                    <li>Remove four 3mm screws.</li>
+                    <li>Remove four 3mm screws from the back panel.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 2</h2>
+            <h2>Step 2: Remove Back Case</h2>
             <div class="content">
                 <img src="image/2.jpg" alt="Step 2" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/2a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/2b.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/2c.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Remove the back case carefully.</li>
-                    <li>Undo the clips along the perimeter.</li>
+                    <li>Carefully remove the back case.</li>
+                    <li>Undo the clips along the perimeter gently.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 3</h2>
+            <h2>Step 3: Disconnect Battery</h2>
             <div class="content">
                 <img src="image/3.jpg" alt="Step 3" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/3a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/3b.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/3c.jpg" class="thumbnail" alt="Thumbnail">
@@ -77,81 +188,89 @@
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 4</h2>
+            <h2>Step 4: Remove HDD Bracket</h2>
             <div class="content">
                 <img src="image/4.jpg" alt="Step 4" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/4a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/4b.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/4c.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Remove four screws from the HDD bracket.</li>
+                    <li>Remove four screws securing the HDD bracket.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 5</h2>
+            <h2>Step 5: Insert New HDD</h2>
             <div class="content">
                 <img src="image/5.jpg" alt="Step 5" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/5a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/5b.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/5c.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Place the HDD in the bracket and secure with screws.</li>
+                    <li>Place the new HDD in the bracket.</li>
+                    <li>Secure it with screws.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 6</h2>
+            <h2>Step 6: Connect SATA Cable</h2>
             <div class="content">
                 <img src="image/6.jpg" alt="Step 6" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/6a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/6b.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Attach the SATA connector to the HDD.</li>
+                    <li>Connect the SATA cable to the HDD.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 7</h2>
+            <h2>Step 7: Secure the HDD</h2>
             <div class="content">
                 <img src="image/7.jpg" alt="Step 7" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/7a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/7b.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Slide the HDD into place and secure it.</li>
+                    <li>Slide the HDD back into place.</li>
+                    <li>Secure it with screws.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 8</h2>
+            <h2>Step 8: Reassemble and Finish</h2>
             <div class="content">
                 <img src="image/8.jpg" alt="Step 8" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/8a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/8b.jpg" class="thumbnail" alt="Thumbnail">
-                    <img src="image/8c.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Connect the hard drive cable to the motherboard.</li>
+                    <li>Reconnect the hard drive cable to the motherboard.</li>
+                    <li>Reassemble the back cover and secure screws.</li>
                 </ul>
             </div>
         </div>
     </div>
+
     <script>
         function goBack() {
             window.location.href = '../../../Laptops/acer.html';
         }
     </script>
     <script src="../../../script.js"></script>
-
 </body>
+
 </html>
