@@ -1,149 +1,255 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hp HDD Replacement Guide</title>
+    <title>HP HDD Replacement Guide</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; background-color: #eeeeee; padding: 20px; }
-        .step { border-bottom: 1px solid #ddd; padding: auto; background-color: #fff; margin-bottom: 8px; font-size: 50px; }
-        .step h2 { font-size: 50px; }
-        .content { padding: 15px; background-color: #fff; font-size: 25px; }
-        .thumbnail { width: 100px; height: 100px; margin-right: 5px; border: 1px solid #ddd; }
-        .main-image { width: 770px; height: auto; margin-bottom: 10px; border: 1px solid #ddd; }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9fafc;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .step h2 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .main-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            margin: 0 auto 10px auto;
+            display: block;
+            border: 2px solid #ddd;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .thumbnail {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+        }
+
         .back-button {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            padding: 8px 15px;
+            top: 15px;
+            left: 15px;
+            padding: 10px 15px;
             background-color: #007bff;
-            color: white;
+            color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 14px;
             cursor: pointer;
-            font-size: 16px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out;
         }
+
         .back-button:hover {
             background-color: #0056b3;
         }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .step h2 {
+                font-size: 20px;
+            }
+
+            ul li {
+                font-size: 16px;
+            }
+
+            .main-image {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .thumbnail {
+                width: 60px;
+                height: 60px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <button onclick="goBack()" class="back-button">&#8592; Back</button>
-    <h1 style="font-size: 28px; text-align: center;">Hp HDD Replacement Guide</h1>
+    <h1>HP HDD Replacement Guide</h1>
+
     <div id="steps">
         <div class="step">
-            <h2>Step 1 Hard Drive</h2>
+            <h2>Step 1: Disconnect Power</h2>
             <div class="content">
                 <img src="image/1.jpg" alt="Step 1" class="main-image">
-                <div>
-                </div>
                 <ul>
-                    <li>Make sure the laptop is turned off, and the power cable is removed.</li>
-                    <li>Leaving the laptop turned on can cause damage to the hardware and any stored data.</li>
+                    <li>✅ Make sure the laptop is turned off and the power cable is disconnected.</li>
+                    <li>✅ Avoid hardware damage by turning off the system before proceeding.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 2</h2>
+            <h2>Step 2: Access Back Panel</h2>
             <div class="content">
                 <img src="image/2.jpg" alt="Step 2" class="main-image">
-                <div>
-                </div>
                 <ul>
-                    <li>Turn the laptop over to access the backside of the computer.</li>
-                    <li>Identify and confirm that the laptop is an HP Pavilion DV5T-1000.</li>
+                    <li>✅ Turn the laptop over to access the backside.</li>
+                    <li>✅ Confirm that the laptop is an HP Pavilion DV5T-1000.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 3</h2>
+            <h2>Step 3: Remove Battery</h2>
             <div class="content">
                 <img src="image/3.jpg" alt="Step 3" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/3a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/3b.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Slide the battery lock to the left, it's located just below the battery compartment.</li>
-                    <li>Pull the battery up and out, to remove it from the battery compartment.</li>
-                    <li>To prevent hardware damage, remove the battery before working on the laptop.</li>
+                    <li>✅ Slide the battery lock to the left below the battery compartment.</li>
+                    <li>✅ Remove the battery carefully to avoid hardware damage.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 4</h2>
+            <h2>Step 4: Locate HDD Compartment</h2>
             <div class="content">
                 <img src="image/4.jpg" alt="Step 4" class="main-image">
-                <div>
-                </div>
                 <ul>
-                    <li>Identify the hard drive compartment, located at the top left-hand frame of the laptop.</li>
+                    <li>✅ Identify the hard drive compartment located at the top left of the laptop.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 5</h2>
+            <h2>Step 5: Remove Cover Screws</h2>
             <div class="content">
                 <img src="image/5.jpg" alt="Step 5" class="main-image">
-                <div>
-                </div>
                 <ul>
-                    <li>In order to remove the hard drive compartment cover, first remove the two screws located on the panel, using a size 0 Phillips head screwdriver.</li>
+                    <li>✅ Use a Phillips #0 screwdriver to remove the two screws securing the cover.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 6</h2>
+            <h2>Step 6: Expose the HDD</h2>
             <div class="content">
                 <img src="image/6.jpg" alt="Step 6" class="main-image">
-                <div>
-                </div>
                 <ul>
-                    <li>Expose the hard drive by lifting the drive cover.</li>
+                    <li>✅ Lift the cover to expose the hard drive.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 7</h2>
+            <h2>Step 7: Loosen HDD Connection</h2>
             <div class="content">
                 <img src="image/7.jpg" alt="Step 7" class="main-image">
-                <div>
-                </div>
                 <ul>
-                    <li>In order to loosen the hard drive from the motherboard, tug gently on the black tabs located at both ends of the hard drive.</li>
-                    <li>Be cautious when handling the cable that connects the hard drive to the computer's motherboard.</li>
+                    <li>✅ Gently tug the black tabs on both ends to loosen the hard drive.</li>
+                    <li>✅ Be cautious while handling the HDD cable connected to the motherboard.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 8</h2>
+            <h2>Step 8: Disconnect HDD</h2>
             <div class="content">
                 <img src="image/8.jpg" alt="Step 8" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/8a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/8b.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Firmly hold both the black plug, and the hard drive itself to separate the drive from the cable.</li>
+                    <li>✅ Firmly hold the black plug and the hard drive to detach them safely.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 9</h2>
+            <h2>Step 9: Remove Bracket</h2>
             <div class="content">
                 <img src="image/9.jpg" alt="Step 9" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/9a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/9b.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Remove the 4 screws using a size 0 Phillips head screwdriver.</li>
-                    <li>Remove the metal from the perimeter of the hard drive.</li>
+                    <li>✅ Use a Phillips #0 screwdriver to remove the four screws securing the bracket.</li>
+                    <li>✅ Carefully remove the metal bracket from the hard drive.</li>
                 </ul>
             </div>
         </div>
     </div>
+
     <script>
         function goBack() {
             window.location.href = '../../../Laptops/hp.html';
@@ -151,4 +257,5 @@
     </script>
     <script src="../../../script.js"></script>
 </body>
+
 </html>

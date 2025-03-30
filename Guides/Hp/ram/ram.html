@@ -1,131 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hp RAM Replacement Guide</title>
+    <title>HP RAM Replacement Guide</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; background-color: #eeeeee; padding: 20px; }
-        .step { border-bottom: 1px solid #ddd; padding: auto; background-color: #fff; margin-bottom: 8px; font-size: 18px; }
-        .step h2 { font-size: 22px; }
-        .content { padding: 15px; background-color: #fff; font-size: 25px; }
-        .thumbnail { width: 100px; height: 100px; margin-right: 5px; border: 1px solid #ddd; }
-        .main-image { width: 770px; height: auto; margin-bottom: 10px; border: 1px solid #ddd; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9fafc;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .step h2 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .main-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            margin: 0 auto 10px auto;
+            display: block;
+            border: 2px solid #ddd;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .thumbnail {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+        }
+
         .back-button {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            padding: 8px 15px;
+            top: 15px;
+            left: 15px;
+            padding: 10px 15px;
             background-color: #007bff;
-            color: white;
+            color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 14px;
             cursor: pointer;
-            font-size: 16px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out;
         }
+
         .back-button:hover {
             background-color: #0056b3;
         }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .step h2 {
+                font-size: 20px;
+            }
+
+            ul li {
+                font-size: 16px;
+            }
+
+            .main-image {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .thumbnail {
+                width: 60px;
+                height: 60px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <button onclick="goBack()" class="back-button">&#8592; Back</button>
-    <h1 style="font-size: 28px; text-align: center;">Hp RAM Replacement Guide</h1>
+    <h1>HP RAM Replacement Guide</h1>
+
     <div id="steps">
         <div class="step">
-            <h2>Step 1</h2>
+            <h2>Step 1: Flip the Laptop</h2>
             <div class="content">
                 <img src="image/1.jpg" alt="Step 1" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/1a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/1b.jpg" class="thumbnail" alt="Thumbnail">
-                    
                 </div>
                 <ul>
-                    <li>Flip the laptop over so the bottom is facing up and the external battery is at the top.</li>
+                    <li>✅ Flip the laptop over so the bottom is facing up and the external battery is at the top.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 2</h2>
+            <h2>Step 2: Remove Battery</h2>
             <div class="content">
                 <img src="image/2.jpg" alt="Step 2" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/2a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/2b.jpg" class="thumbnail" alt="Thumbnail">
-                   
                 </div>
                 <ul>
-                    <li>Use your thumbs to slide the battery locks towards the center and pop the battery out.</li>
+                    <li>✅ Use your thumbs to slide the battery locks towards the center.</li>
+                    <li>✅ Pop the battery out gently to avoid any damage.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 3</h2>
+            <h2>Step 3: Remove Rubber Stoppers</h2>
             <div class="content">
                 <img src="image/3.jpg" alt="Step 3" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/3a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/3b.jpg" class="thumbnail" alt="Thumbnail">
-                   
                 </div>
                 <ul>
-                    <li>Slowly peel off the two rubber stoppers found at the top corners of the laptop.</li>
-                    <li>This will expose two Phillips #00 10 mm screws required to remove the back plate.</li>
-                    <li>Be careful not to peel off the rubber stoppers too quickly as it could cause the adhesive on the rubber stopper to strip off.</li>
+                    <li>✅ Slowly peel off the two rubber stoppers at the top corners.</li>
+                    <li>✅ Be cautious to avoid stripping the adhesive.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 4</h2>
+            <h2>Step 4: Remove Back Plate</h2>
             <div class="content">
                 <img src="image/4.jpg" alt="Step 4" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/4a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/4b.jpg" class="thumbnail" alt="Thumbnail">
-                   
                 </div>
                 <ul>
-                    <li>Use a Phillips #00 screwdriver to remove the twelve 10 mm screws (from the twelve holes shown) that secure the bottom case.</li>
-                    <li>Use an opening tool to carefully separate the back case from the chassis, working around all four sides.</li>
-                    <li>You will hear a "click" as you release the clips and remove it.</li>
+                    <li>✅ Use a Phillips #00 screwdriver to remove the 12 screws.</li>
+                    <li>✅ Carefully lift the back plate using an opening tool.</li>
+                    <li>✅ You will hear a "click" when the clips are released.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 5</h2>
+            <h2>Step 5: Remove Existing RAM</h2>
             <div class="content">
                 <img src="image/5.jpg" alt="Step 5" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/5a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/5b.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/5c.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>The RAM sticks can be found in the bottom right section of the laptop.</li>
-                    <li>Push both side arms holding the RAM stick in place outwards.</li>
-                    <li>The RAM sticks will "pop" up at a 45-degree angle when released from the arms.</li>
-                    <li>Slide the RAM sticks out of the socket gently.</li>
+                    <li>✅ Locate the RAM sticks in the bottom right section.</li>
+                    <li>✅ Push both side arms outwards to release the RAM.</li>
+                    <li>✅ Slide the RAM out at a 45-degree angle gently.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 6</h2>
+            <h2>Step 6: Install New RAM</h2>
             <div class="content">
                 <img src="image/6.jpg" alt="Step 6" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/6a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/6b.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/6c.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Carefully slide the new replacement RAM sticks into their slots.</li>
-                    <li>Make sure to align the edge of the RAM sticks with the slots to avoid damaging both.</li>
-                    <li>Gently push the RAM sticks downward until the latches click into place to secure them.</li>
+                    <li>✅ Carefully insert the new RAM sticks into the slots.</li>
+                    <li>✅ Align them properly and slide them in gently.</li>
+                    <li>✅ Press down until the latches click into place to secure them.</li>
                 </ul>
             </div>
         </div>
     </div>
+
     <script>
         function goBack() {
             window.location.href = '../../../Laptops/hp.html';
@@ -133,4 +244,5 @@
     </script>
     <script src="../../../script.js"></script>
 </body>
+
 </html>

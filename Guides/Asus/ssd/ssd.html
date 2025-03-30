@@ -1,146 +1,260 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asus SSD Replacement Guide</title>
     <style>
-        body { font-family: Arial, sans-serif; max-width: 800px; margin: auto; background-color: #eeeeee; padding: 20px; }
-        .step { border-bottom: 1px solid #ddd; padding: auto; background-color: #fff; margin-bottom: 8px; font-size: 18px; }
-        .step h2 { font-size: 22px; }
-        .content { padding: 15px; background-color: #fff; font-size: 25px; }
-        .thumbnail { width: 100px; height: 100px; margin-right: 5px; border: 1px solid #ddd; }
-        .main-image { width: 770px; height: auto; margin-bottom: 10px; border: 1px solid #ddd; }
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f9fafc;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 32px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .step {
+            background-color: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .step h2 {
+            font-size: 24px;
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .main-image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            margin: 0 auto 10px auto;
+            display: block;
+            border: 2px solid #ddd;
+        }
+
+        .thumbnail-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .thumbnail {
+            width: 70px;
+            height: 70px;
+            border-radius: 8px;
+            border: 2px solid #ddd;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .thumbnail:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 8px 0;
+            font-size: 18px;
+            font-weight: bold;
+            color: #444;
+        }
+
         .back-button {
             position: absolute;
-            top: 10px;
-            left: 10px;
-            padding: 8px 15px;
+            top: 15px;
+            left: 15px;
+            padding: 10px 15px;
             background-color: #007bff;
-            color: white;
+            color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 14px;
             cursor: pointer;
-            font-size: 16px;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease-in-out;
         }
+
         .back-button:hover {
             background-color: #0056b3;
         }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .step h2 {
+                font-size: 20px;
+            }
+
+            ul li {
+                font-size: 16px;
+            }
+
+            .main-image {
+                width: 100%;
+                max-width: 100%;
+            }
+
+            .thumbnail {
+                width: 60px;
+                height: 60px;
+            }
+        }
     </style>
 </head>
+
 <body>
     <button onclick="goBack()" class="back-button">&#8592; Back</button>
-    <h1 style="font-size: 28px; text-align: center;">Asus SSD Replacement Guide</h1>
+    <h1>Asus SSD Replacement Guide</h1>
+
     <div id="steps">
         <div class="step">
-            <h2>Step 1 SSD</h2>
+            <h2>Step 1: Disconnect Power</h2>
             <div class="content">
                 <img src="image/1.jpg" alt="Step 1" class="main-image">
-                <div>
-                </div>
                 <ul>
-                    <li>Disconnect the ASUS laptop from the external power supply before starting.</li>
-                    <li>Place the laptop on a flat table with its back facing up.</li>
+                    <li>✅ Disconnect the ASUS laptop from the external power supply.</li>
+                    <li>✅ Place the laptop on a flat surface with its back facing up.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 2</h2>
+            <h2>Step 2: Unlock Battery</h2>
             <div class="content">
                 <img src="image/2.jpg" alt="Step 2" class="main-image">
-                <div>
-                </div>
                 <ul>
-                    <li>Slide the latch on the right side of the battery on the back of the laptop to the right to the unlocked position.</li>
+                    <li>✅ Slide the latch on the right side of the battery to the unlocked position.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 3</h2>
+            <h2>Step 3: Remove Battery</h2>
             <div class="content">
                 <img src="image/3.jpg" alt="Step 3" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/3a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/3b.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/3c.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>With your left hand, slide the latch on the left side of the battery to the left and hold it.</li>
-                    <li>With your right hand, slide the battery out of the battery compartment and place the battery away from the laptop.</li>
+                    <li>✅ Slide the latch on the left side of the battery while holding it.</li>
+                    <li>✅ Slide the battery out and place it away from the laptop.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 4</h2>
+            <h2>Step 4: Unscrew Bottom Cover</h2>
             <div class="content">
                 <img src="image/4.jpg" alt="Step 4" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/4a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/4b.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Remove the two screws on the bottom of the laptop using a Phillips #0 screwdriver.</li>
+                    <li>✅ Remove the two screws using a Phillips #0 screwdriver.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 5</h2>
+            <h2>Step 5: Remove Hard Disk Cover</h2>
             <div class="content">
                 <img src="image/5.jpg" alt="Step 5" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/5a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/5b.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/5c.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Slide the hard disk compartment cover towards you with both hands and remove it from the laptop.</li>
+                    <li>✅ Slide the hard disk compartment cover towards you and remove it.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 6</h2>
+            <h2>Step 6: Unscrew Hard Drive Support</h2>
             <div class="content">
                 <img src="image/6.jpg" alt="Step 6" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/6a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/6b.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/6c.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Remove the four screws from the hard drive support arm using a Phillips #0 screwdriver.</li>
+                    <li>✅ Remove the four screws securing the hard drive support arm.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 7</h2>
+            <h2>Step 7: Remove Old SSD</h2>
             <div class="content">
                 <img src="image/7.jpg" alt="Step 7" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/7a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/7b.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/7c.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Lift the plastic sheet on the left side of the hard drive slightly by hand.</li>
-                    <li>Remove the hard drive and its support from the hard drive compartment.</li>
+                    <li>✅ Lift the plastic sheet slightly and remove the SSD.</li>
                 </ul>
             </div>
         </div>
+
         <div class="step">
-            <h2>Step 8</h2>
+            <h2>Step 8: Install New SSD</h2>
             <div class="content">
                 <img src="image/8.jpg" alt="Step 8" class="main-image">
-                <div>
+                <div class="thumbnail-container">
                     <img src="image/8a.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/8b.jpg" class="thumbnail" alt="Thumbnail">
                     <img src="image/8c.jpg" class="thumbnail" alt="Thumbnail">
                 </div>
                 <ul>
-                    <li>Remove the four screws on the side of the hard disk support using a Phillips #0 screwdriver.</li>
+                    <li>✅ Place the new SSD into the hard disk support.</li>
+                    <li>✅ Secure it by replacing the four screws.</li>
                 </ul>
             </div>
         </div>
     </div>
+
     <script>
         function goBack() {
             window.location.href = '../../../Laptops/asus.html';
@@ -148,4 +262,5 @@
     </script>
     <script src="../../../script.js"></script>
 </body>
+
 </html>
