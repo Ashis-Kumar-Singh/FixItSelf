@@ -11,32 +11,47 @@
             margin: 0;
             padding: 20px;
             background-color: #f8f9fa;
+            transition: background-color 0.3s ease;
+        }
+        h1 {
+            color: black; /* Set the text color to black */
         }
         .container {
             width: 80%;
             margin: auto;
             padding: 20px;
             background: white;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Dark shadow */
+            transition: transform 0.3s ease;
         }
         .header {
             display: flex;
+            background: rgb(255, 255, 255);
             align-items: center;
             gap: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Dark shadow */
         }
         .header img {
-            width: 80px;
+            width: 150px;
             height: auto;
         }
         .question {
             font-size: 1.5em;
-            margin-bottom: 50px;
+            margin-bottom: 20px;
         }
         .options {
             display: flex;
             flex-direction: column;
+            width: 1000px;
+            margin: auto;
             gap: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #e9ecef;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Dark shadow */
         }
         .options button {
             background-color: #00539B;
@@ -46,9 +61,12 @@
             cursor: pointer;
             border-radius: 50px;
             font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .options button:hover {
-            background-color: #00539B;
+            background-color: #004080;
+            transform: scale(1.05);
         }
         .back-button {
             margin-top: 20px;
@@ -59,69 +77,160 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
         .back-button:hover {
             background-color: #5a6268;
+            transform: scale(1.05);
+        }
+        .start-over-button {
+            margin-top: 20px;
+            padding: 10px 20px; /* Increased padding for larger button */
+            background-color: #007bff; /* Change color if needed */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.3em; /* Increased font size */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .start-over-button:hover {
+            background-color: #0056b3; /* Darker shade on hover */
+            transform: scale(1.05);
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            font-size: 1.5em;
+            border-radius: 10px;
+            width: 80%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        .close {
+            color: #a9a9a9;
+            float: right;
+            font-size: 80px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .issue-selection {
+            font-size: 1.8em; /* Increase the font size as needed */
+            margin-bottom: 20px; /* Add some space below the text */
+            font-weight: bold; /* Optional: make the text bold */
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <header class="header">
             <img src="../images/asus.png" alt="Asus Logo">
-            <h1>Troubleshooting 🤖Assistant</h1>
-        </div>
-        <p>Select your Asus Laptop Issue:</p>
-        <div id="troubleshooting-tree">
+            <h1>Troubleshooting 🤖 Assistant</h1>
+        </header>
+        <p class="issue-selection">Select your Asus Laptop Issue:</p>
+        <main id="troubleshooting-tree">
             <div class="question" id="question">What issue are you facing?</div>
             <div class="options" id="options">
-                <button onclick="showNext('battery')">Battery Issues</button>
-                <button onclick="showNext('hardware')">Hardware Issues</button>
-                <button onclick="showNext('ram')">RAM Issues</button>
-                <button onclick="showNext('screen')">Screen Issues</button>
-                <button class='back-button' onclick="goBack()">Go Back</button>
+                <button onclick="showNext('battery')" aria-label="Battery Issues">🔋 Battery Issues</button>
+                <button onclick="showNext('hardware')" aria-label="Hardware Issues">🖥️ Hardware Issues</button>
+                <button onclick="showNext('ram')" aria-label="RAM Issues">🧠 RAM Issues</button>
+                <button onclick="showNext('screen')" aria-label="Screen Issues">🖼️ Screen Issues</button>
+                <button onclick="showNext('software')" aria-label="Software Issues">💻 Software Issues</button>
+                <button onclick="showNext('network')" aria-label="Network Issues">🌐 Network Issues</button>
+                <button class='back-button' onclick="goBack()" aria-label="Go Back">Go Back</button>
             </div>
+        </main>
+    </div>
+
+    <div class="modal" id="solutionModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()" aria-label="Close Modal">&times;</span>
+            <h3 id="solutionTitle">Solution:</h3>
+            <p id="solutionText"></p>
+            <button class="start-over-button" onclick="location.reload()" aria-label="Start Over">🔄 Start Over</button>
         </div>
     </div>
+
     <script>
         let historyStack = [];
-        const initialContent = document.getElementById('options').innerHTML;
 
         function showNext(category) {
             historyStack.push(document.getElementById('options').innerHTML);
             let content = '';
-            if (category === 'battery') {
-                content = `
-                    <h3>What is the battery issue?</h3>
-                    <button onclick="showSubtree('notCharging')">Not Charging</button>
-                    <button onclick="showSubtree('turnOff')">Turns Off Randomly</button>
-                    <button onclick="showSubtree('fastDrain')">Fast Battery Drain</button>
-                    <button onclick="showSubtree('swollenBattery')">Swollen Battery</button>
-                `;
-            } else if (category === 'hardware') {
-                content = `
-                    <h3>What is the hardware issue?</h3>
-                    <button onclick="showSubtree('overheat')">Overheating</button>
-                    <button onclick="showSubtree('fanNoise')">Noisy Fan</button>
-                    <button onclick="showSubtree('keyboard')">Keyboard Not Working</button>
-                    <button onclick="showSubtree('touchpad')">Touchpad Unresponsive</button>
-                `;
-            } else if (category === 'ram') {
-                content = `
-                    <h3>What is the RAM issue?</h3>
-                    <button onclick="showSubtree('slow')">Slow Performance</button>
-                    <button onclick="showSubtree('crash')">Frequent Crashes</button>
-                    <button onclick="showSubtree('upgrade')">Upgrade Recommendation</button>
-                    <button onclick="showSubtree('incompatibility')">RAM Incompatibility</button>
-                `;
-            } else if (category === 'screen') {
-                content = `
-                    <h3>What is the screen issue?</h3>
-                    <button onclick="showSubtree('noDisplay')">No Display</button>
-                    <button onclick="showSubtree('flicker')">Screen Flickering</button>
-                    <button onclick="showSubtree('deadPixels')">Dead Pixels</button>
-                    <button onclick="showSubtree('backlight')">Backlight Issues</button>
-                `;
+            switch (category) {
+                case 'battery':
+                    content = `
+                        <h3>What is the battery issue?</h3>
+                        <button onclick="showSubtree('notCharging')">🔌 Not Charging</button>
+                        <button onclick="showSubtree('turnOff')">⚡ Turns Off Randomly</button>
+                        <button onclick="showSubtree('fastDrain')">⏳ Fast Battery Drain</button>
+                        <button onclick="showSubtree('swollenBattery')">⚠️ Swollen Battery</button>
+                    `;
+                    break;
+                case 'hardware':
+                    content = `
+                        <h3>What is the hardware issue?</h3>
+                        <button onclick="showSubtree('overheat')">🔥 Overheating</button>
+                        <button onclick="showSubtree('fanNoise')">🔊 Noisy Fan</button>
+                        <button onclick="showSubtree('keyboard')">⌨️ Keyboard Not Working</button>
+                        <button onclick="showSubtree('touchpad')">🖱️ Touchpad Unresponsive</button>
+                        <button onclick="showSubtree('usbPorts')">🔌 USB Ports Not Working</button>
+                    `;
+                    break;
+                case 'ram':
+                    content = `
+                        <h3>What is the RAM issue?</h3>
+                        <button onclick="showSubtree('slow')">🐢 Slow Performance</button>
+                        <button onclick="showSubtree('crash')">💥 Frequent Crashes</button>
+                        <button onclick="showSubtree('upgrade')">⬆️ Upgrade Recommendation</button>
+                        <button onclick="showSubtree('incompatibility')">❌ RAM Incompatibility</button>
+                    `;
+                    break;
+                case 'screen':
+                    content = `
+                        <h3>What is the screen issue?</h3>
+                        <button onclick="showSubtree('noDisplay')">🚫 No Display</button>
+                        <button onclick="showSubtree('flicker')">⚡ Screen Flickering</button>
+                        <button onclick="showSubtree('deadPixels')">🔴 Dead Pixels</button>
+                        <button onclick="showSubtree('backlight')">💡 Backlight Issues</button>
+                    `;
+                    break;
+                case 'software':
+                    content = `
+                        <h3>What is the software issue?</h3>
+                        <button onclick="showSubtree('slowBoot')">🐢 Slow Boot</button>
+                        <button onclick="showSubtree('crash')">💥 Application Crashes</button>
+                        <button onclick="showSubtree('update')">🔄 Windows Update Issues</button>
+                        <button onclick="showSubtree('malware')">🦠 Malware Infection</button>
+                    `;
+                    break;
+                case 'network':
+                    content = `
+                        <h3>What is the network issue?</h3>
+                        <button onclick="showSubtree('wifiNotConnecting')">📶 Wi-Fi Not Connecting</button>
+                        <button onclick="showSubtree('slowInternet')">🐢 Slow Internet</button>
+                        <button onclick="showSubtree('bluetooth')">🔵 Bluetooth Issues</button>
+                    `;
+                    break;
+                default:
+                    content = '<p>No issues found.</p>';
             }
             document.getElementById('options').innerHTML = content + getBackButton();
         }
@@ -133,108 +242,164 @@
                 case 'notCharging':
                     content = `
                         <h3>What is the possible cause?</h3>
-                        <button onclick="showSolution('batteryCalibration')">Battery Calibration</button>
-                        <button onclick="showSolution('powerSupply')">Power Supply Issues</button>
+                        <button onclick="showSolution('batteryCalibration')">🔧 Battery Calibration</button>
+                        <button onclick="showSolution('powerSupply')">🔌 Power Supply Issues</button>
                     `;
                     break;
                 case 'turnOff':
                     content = `
                         <h3>Possible causes?</h3>
-                        <button onclick="showSolution('overheatShutdown')">Overheating Shutdown</button>
-                        <button onclick="showSolution('batteryHealth')">Battery Health Issues</button>
+                        <button onclick="showSolution('overheatShutdown')">🔥 Overheating Shutdown</button>
+                        <button onclick="showSolution('batteryHealth')">💔 Battery Health Issues</button>
                     `;
                     break;
                 case 'fastDrain':
                     content = `
                         <h3>Possible causes?</h3>
-                        <button onclick="showSolution('backgroundApps')">Background Apps</button>
-                        <button onclick="showSolution('powerSettings')">Power Settings</button>
+                        <button onclick="showSolution('backgroundApps')">📱 Background Apps</button>
+                        <button onclick="showSolution('powerSettings')">⚙️ Power Settings</button>
                     `;
                     break;
                 case 'swollenBattery':
                     content = `
                         <h3>Action Needed</h3>
-                        <button onclick="showSolution('immediateReplacement')">Replace Battery Immediately</button>
+                        <button onclick="showSolution('immediateReplacement')">⚠️ Replace Battery Immediately</button>
                     `;
                     break;
                 case 'overheat':
                     content = `
                         <h3>What is causing the overheating?</h3>
-                        <button onclick="showSolution('blockedVents')">Blocked Vents</button>
-                        <button onclick="showSolution('dustAccumulation')">Dust Accumulation</button>
+                        <button onclick="showSolution('blockedVents')">🚪 Blocked Vents</button>
+                        <button onclick="showSolution('dustAccumulation')">🧹 Dust Accumulation</button>
                     `;
                     break;
                 case 'fanNoise':
                     content = `
                         <h3>What is causing the noisy fan?</h3>
-                        <button onclick="showSolution('fanMalfunction')">Fan Malfunction</button>
-                        <button onclick="showSolution('dustBuildUp')">Dust Build-Up</button>
+                        <button onclick="showSolution('fanMalfunction')">🔧 Fan Malfunction</button>
+                        <button onclick="showSolution('dustBuildUp')">🧹 Dust Build-Up</button>
                     `;
                     break;
                 case 'keyboard':
                     content = `
                         <h3>Keyboard Issue</h3>
-                        <button onclick="showSolution('driverUpdate')">Update Keyboard Drivers</button>
-                        <button onclick="showSolution('hardwareCheck')">Check Hardware Connections</button>
+                        <button onclick="showSolution('driverUpdate')">🔄 Update Keyboard Drivers</button>
+                        <button onclick="showSolution('hardwareCheck')">🔍 Check Hardware Connections</button>
                     `;
                     break;
                 case 'touchpad':
                     content = `
                         <h3>Touchpad Issue</h3>
-                        <button onclick="showSolution('enableTouchpad')">Enable Touchpad from Settings</button>
-                        <button onclick="showSolution('driverUpdate')">Update Touchpad Drivers</button>
+                        <button onclick="showSolution('enableTouchpad')">✅ Enable Touchpad from Settings</button>
+                        <button onclick="showSolution('driverUpdate')">🔄 Update Touchpad Drivers</button>
+                    `;
+                    break;
+                case 'usbPorts':
+                    content = `
+                        <h3>USB Ports Issue</h3>
+                        <button onclick="showSolution('checkConnections')">🔌 Check USB Connections</button>
+                        <button onclick="showSolution('driverUpdate')">🔄 Update USB Drivers</button>
                     `;
                     break;
                 case 'slow':
                     content = `
                         <h3>What is causing slow performance?</h3>
-                        <button onclick="showSolution('insufficientRAM')">Insufficient RAM</button>
-                        <button onclick="showSolution('backgroundProcesses')">Background Processes</button>
+                        <button onclick="showSolution('insufficientRAM')">🧠 Insufficient RAM</button>
+                        <button onclick="showSolution('backgroundProcesses')">🔄 Background Processes</button>
                     `;
                     break;
                 case 'crash':
                     content = `
                         <h3>What is causing frequent crashes?</h3>
-                        <button onclick="showSolution('ramIncompatibility')">RAM Incompatibility</button>
-                        <button onclick="showSolution('corruptedFiles')">Corrupted Files</button>
+                        <button onclick="showSolution('ramIncompatibility')">❌ RAM Incompatibility</button>
+                        <button onclick="showSolution('corruptedFiles')">🗂️ Corrupted Files</button>
                     `;
                     break;
                 case 'upgrade':
                     content = `
                         <h3>Upgrade Recommendation</h3>
-                        <button onclick="showSolution('bestPractices')">Best Practices for Upgrading</button>
+                        <button onclick="showSolution('bestPractices')">📈 Best Practices for Upgrading</button>
                     `;
                     break;
                 case 'incompatibility':
                     content = `
                         <h3>What is the RAM incompatibility issue?</h3>
-                        <button onclick="showSolution('checkCompatibility')">Check Compatibility</button>
+                        <button onclick="showSolution('checkCompatibility')">✅ Check Compatibility</button>
                     `;
                     break;
                 case 'noDisplay':
                     content = `
                         <h3>What could be causing no display?</h3>
-                        <button onclick="showSolution('powerIssues')">Power Issues</button>
-                        <button onclick="showSolution('displayConnection')">Display Connection Issues</button>
+                        <button onclick="showSolution('powerIssues')">🔋 Power Issues</button>
+                        <button onclick="showSolution('displayConnection')">🔌 Display Connection Issues</button>
                     `;
                     break;
                 case 'flicker':
                     content = `
                         <h3>What could be causing screen flickering?</h3>
-                        <button onclick="showSolution('driverIssues')">Driver Issues</button>
-                        <button onclick="showSolution('refreshRate')">Refresh Rate Settings</button>
+                        <button onclick="showSolution('driverIssues')">🔄 Driver Issues</button>
+                        <button onclick="showSolution('refreshRate')">⚙️ Refresh Rate Settings</button>
                     `;
                     break;
                 case 'deadPixels':
                     content = `
                         <h3>What to do about dead pixels?</h3>
-                        <button onclick="showSolution('manufacturingDefect')">Manufacturing Defect</button>
+                        <button onclick="showSolution('manufacturingDefect')">🏭 Manufacturing Defect</button>
                     `;
                     break;
                 case 'backlight':
                     content = `
                         <h3>What could be causing backlight issues?</h3>
-                        <button onclick="showSolution('hardwareFailure')">Hardware Failure</button>
+                        <button onclick="showSolution('hardwareFailure')">⚠️ Hardware Failure</button>
+                    `;
+                    break;
+                case 'slowBoot':
+                    content = `
+                        <h3>What could be causing slow boot?</h3>
+                        <button onclick="showSolution('startupPrograms')">🔄 Disable Startup Programs</button>
+                        <button onclick="showSolution('diskCheck')">🗂️ Check Disk for Errors</button>
+                    `;
+                    break;
+                case 'applicationCrashes':
+                    content = `
+                        <h3>What could be causing application crashes?</h3>
+                        <button onclick="showSolution('updateSoftware')">🔄 Update Software</button>
+                        <button onclick="showSolution('reinstall')">🔄 Reinstall Application</button>
+                    `;
+                    break;
+                case 'update':
+                    content = `
+                        <h3>What could be causing Windows update issues?</h3>
+                        <button onclick="showSolution('checkInternet')">🌐 Check Internet Connection</button>
+                        <button onclick="showSolution('updateTroubleshooter')">🔧 Run Update Troubleshooter</button>
+                    `;
+                    break;
+                case 'malware':
+                    content = `
+                        <h3>What to do about malware infection?</h3>
+                        <button onclick="showSolution('runAntivirus')">🦠 Run Antivirus Scan</button>
+                        <button onclick="showSolution('restoreSystem')">🔄 Restore System to Previous State</button>
+                    `;
+                    break;
+                case 'wifiNotConnecting':
+                    content = `
+                        <h3>What could be causing Wi-Fi not to connect?</h3>
+                        <button onclick="showSolution('checkRouter')">🔄 Check Router Settings</button>
+                        <button onclick="showSolution('networkReset')">🔄 Reset Network Settings</button>
+                    `;
+                    break;
+                case 'slowInternet':
+                    content = `
+                        <h3>What could be causing slow internet?</h3>
+                        <button onclick="showSolution('checkBandwidth')">📊 Check Bandwidth Usage</button>
+                        <button onclick="showSolution('routerPosition')">📡 Optimize Router Position</button>
+                    `;
+                    break;
+                case 'bluetooth':
+                    content = `
+                        <h3>What could be causing Bluetooth issues?</h3>
+                        <button onclick="showSolution('checkDevice')">🔄 Check Bluetooth Device</button>
+                        <button onclick="showSolution('driverUpdate')">🔄 Update Bluetooth Drivers</button>
                     `;
                     break;
                 default:
@@ -289,6 +454,9 @@
                 case 'enableTouchpad':
                     solution = '✅ Enable touchpad in BIOS or Windows settings.';
                     break;
+                case 'checkConnections':
+                    solution = '✅ Ensure USB devices are properly connected and try different ports.';
+                    break;
                 case 'insufficientRAM':
                     solution = '✅ Consider upgrading RAM based on Asus\'s compatibility guide.';
                     break;
@@ -325,10 +493,55 @@
                 case 'hardwareFailure':
                     solution = '✅ Check for hardware issues and contact Asus Support for repairs.';
                     break;
+                case 'startupPrograms':
+                    solution = '✅ Disable unnecessary startup programs via Task Manager.';
+                    break;
+                case 'diskCheck':
+                    solution = '✅ Run a disk check using Windows tools to fix errors.';
+                    break;
+                case 'updateSoftware':
+                    solution = '✅ Ensure all software is up to date to avoid compatibility issues.';
+                    break;
+                case 'reinstall':
+                    solution = '✅ Reinstall the application to resolve any corruption.';
+                    break;
+                case 'checkInternet':
+                    solution = '✅ Ensure your internet connection is stable and working.';
+                    break;
+                case 'updateTroubleshooter':
+                    solution = '✅ Run the Windows Update Troubleshooter to fix update issues.';
+                    break;
+                case 'runAntivirus':
+                    solution = '✅ Use a trusted antivirus program to scan for malware.';
+                    break;
+                case 'restoreSystem':
+                    solution = '✅ Restore your system to a previous point before the infection.';
+                    break;
+                case 'checkRouter':
+                    solution = '✅ Restart your router and check its settings.';
+                    break;
+                case 'networkReset':
+                    solution = '✅ Reset your network settings in Windows.';
+                    break;
+                case 'checkBandwidth':
+                    solution = '✅ Monitor your bandwidth usage to identify heavy usage applications.';
+                    break;
+                case 'routerPosition':
+                    solution = '✅ Ensure your router is placed in a central location for better coverage.';
+                    break;
+                case 'checkDevice':
+                    solution = '✅ Ensure the Bluetooth device is charged and in pairing mode.';
+                    break;
                 default:
                     solution = '❗ No solution available.';
             }
-            document.getElementById('options').innerHTML = `<h3>Solution:</h3><p>${solution}</p>` + getBackButton() + `<button onclick="location.reload()">Start Over</button>`;
+            document.getElementById('solutionText').innerText = solution;
+            document.getElementById('solutionTitle').innerText = 'Solution:';
+            document.getElementById('solutionModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('solutionModal').style.display = 'none';
         }
 
         function goBack() {
