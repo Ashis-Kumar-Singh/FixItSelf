@@ -38,19 +38,17 @@
         .options {
             display: flex;
             flex-direction: column;
-            gap: 10px; /* Reduced gap */
+            gap: 15px;
         }
         .options button {
             background-color: #83b81a;
             color: white;
             border: none;
-            padding: 15px; /* Reduced padding */
+            padding: 20px;
             cursor: pointer;
             border-radius: 50px;
-            font-size: 1em; /* Reduced font size */
+            font-size: 1.2em;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            width: 100%; /* Full width */
-            max-width: 300px; /* Set a max width for buttons */
         }
         .options button:hover {
             background-color: #4b7100;
@@ -66,8 +64,6 @@
             cursor: pointer;
             font-size: 1.1em;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            width: 100%; /* Full width */
-            max-width: 300px; /* Set a max width for back button */
         }
         .back-button:hover {
             background-color: #5a6268;
@@ -106,10 +102,10 @@
         }
         .modal-content {
             background-color: white;
-            padding: 30px; /* Increased padding for larger modal */
+            padding: 20px;
             border-radius: 5px;
             width: 80%;
-            max-width: 800px; /* Increased max width for larger modal */
+            max-width: 600px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
         .close {
@@ -144,8 +140,8 @@
                 <button onclick="showNext('hardware')">Hardware Issues</button>
                 <button onclick="showNext('ram')">RAM Issues</button>
                 <button onclick="showNext('screen')">Screen Issues</button>
+                <button class='back-button' onclick="goBack()">Go Back</button>
             </div>
-            <button class='back-button' onclick="goBack()">Go Back</button> <!-- Separated Go Back button -->
         </div>
     </div>
 
@@ -162,16 +158,15 @@
         let historyStack = [];
         const initialContent = document.getElementById('options').innerHTML;
         let progress = 0;
-        const totalSteps = 10; // Set this to the total number of steps in your troubleshooting flow
 
         function updateProgress() {
             const progressBar = document.getElementById('progress');
-            progressBar.style.width = `${(progress / totalSteps) * 100}%`; // Calculate progress as a percentage
+            progressBar.style.width = `${progress}%`;
         }
 
         function showNext(category) {
             historyStack.push(document.getElementById('options').innerHTML);
-            progress += 1; // Increment progress by 1 step
+            progress += 25; // Increment progress
             updateProgress();
             let content = '';
             if (category === 'battery') {
@@ -207,7 +202,7 @@
                     <button onclick="showSubtree('backlight')">Backlight Issues</button>
                 `;
             }
-            document.getElementById('options').innerHTML = content;
+            document.getElementById('options').innerHTML = content + getBackButton();
             updateBreadcrumbs(category);
         }
 
@@ -330,7 +325,7 @@
                 default:
                     content = '<p>No additional information available.</p>';
             }
-            document.getElementById('options').innerHTML = content;
+            document.getElementById('options').innerHTML = content + getBackButton();
         }
 
         function showSolution(issue) {
@@ -430,11 +425,15 @@
         function goBack() {
             if (historyStack.length > 0) {
                 document.getElementById('options').innerHTML = historyStack.pop();
-                progress -= 1; // Decrement progress
+                progress -= 25; // Decrement progress
                 updateProgress();
             } else {
                 window.location.href = '../Laptops/acer.html';
             }
+        }
+
+        function getBackButton() {
+            return `<button class='back-button' onclick="goBack()">Go Back</button>`;
         }
     </script>
 </body>
